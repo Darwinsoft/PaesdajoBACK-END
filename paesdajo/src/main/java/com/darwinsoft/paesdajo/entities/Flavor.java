@@ -1,11 +1,13 @@
 package com.darwinsoft.paesdajo.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,19 +18,20 @@ public class Flavor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private Double amount;
 	
-	@ManyToOne
-	@JoinColumn(name = "orderId")
-	private Order order;
+	@OneToMany(mappedBy = "flavor")
+	private List<OrderFlavor> orderFlavors= new ArrayList<>();
 	
 	public Flavor() {
 		
 	}
 	
-	public Flavor(Long id, String name, Order order) {
+	public Flavor(Long id, String name,Double amount, List<OrderFlavor> orderFlavors) {
 		this.id = id;
 		this.name = name;
-		this.order = order;
+		this.amount = amount;
+		this.orderFlavors = orderFlavors;
 	}
 
 	public Long getId() {
@@ -43,17 +46,19 @@ public class Flavor {
 		return name;
 	}
 
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 	
-	
+	public List<OrderFlavor> getOrderFlavors(){
+		return orderFlavors;
+	}
 }

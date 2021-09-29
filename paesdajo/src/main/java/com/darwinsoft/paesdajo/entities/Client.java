@@ -21,24 +21,29 @@ public class Client {
 	private String name;
 	
 	@OneToMany(mappedBy = "client")
-	private List<Client> client = new ArrayList<>();
+	private List<Andress> andress = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "telephone")
+	@OneToMany(mappedBy = "client")
 	private List<Telephone> telephones = new ArrayList<>();
 
-	@OneToOne(mappedBy = "user")
-	private List<User> users = new ArrayList<>();
+	@OneToOne(mappedBy = "client")
+	private User user;
 
-	@OneToOne(mappedBy = "order")
+	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 	
 	public Client() {
 		
 	}
-	
-	public Client(Long id, String name) {
+
+	public Client(Long id, String name, List<Andress> andress, List<Telephone> telephones, User user,
+			List<Order> orders) {		
 		this.id = id;
 		this.name = name;
+		this.andress = andress;
+		this.telephones = telephones;
+		this.user = user;
+		this.orders = orders;
 	}
 
 	public Long getId() {
@@ -56,4 +61,24 @@ public class Client {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<Andress> getAndress() {
+		return andress;
+	}
+
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}	
 }

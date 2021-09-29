@@ -1,8 +1,5 @@
 package com.darwinsoft.paesdajo.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,20 +15,20 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Integer cpf;
+	private String cpf;
 	
 	@OneToOne
-	@JoinColumn(name = "clintId")
-	private List<Client> clients = new ArrayList<>();
+	@JoinColumn(name = "clientId")
+	private Client client;
 	
 	public User() {
 		
 	}
 	
-	public User(Long id, Integer cpf, List<Client> clients) {
+	public User(Long id, String cpf, Client client) {
 		this.id = id;
 		this.cpf = cpf;
-		this.clients = clients;
+		this.client = client;
 	}
 
 	public Long getId() {
@@ -42,15 +39,15 @@ public class User {
 		this.id = id;
 	}
 
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public List<Client> getClients() {
-		return clients;
+	public Client getClients() {
+		return client;
 	}
 }

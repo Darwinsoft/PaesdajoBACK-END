@@ -9,26 +9,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_telephone")
-public class Telephone {
+@Table(name = "tb_order_flavor")
+public class OrderFlavor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String telephone;
+	private Long id;	
 	
 	@ManyToOne
-	@JoinColumn(name = "clientId")
-	private Client client;
+	@JoinColumn(name = "flavorId")
+	private Flavor flavor;
 	
-	public Telephone() {
+	@ManyToOne
+	@JoinColumn(name = "orderId")
+	private Order order;
+	
+	public OrderFlavor() {
 		
 	}
-	
-	public Telephone(Long id, String telephone, Client client) {
+
+	public OrderFlavor(Long id, Flavor flavor, Order order) {
 		this.id = id;
-		this.telephone = telephone;
-		this.client = client;
+		this.flavor = flavor;
+		this.order = order;
 	}
 
 	public Long getId() {
@@ -39,17 +42,12 @@ public class Telephone {
 		this.id = id;
 	}
 
-	public String getTelephone() {
-		return telephone;
+	public Flavor getFlavor() {
+		return flavor;
 	}
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public Order getOrder() {
+		return order;
 	}
-	
-	public Client getClients() {
-		return client;
-	}
-	
 	
 }

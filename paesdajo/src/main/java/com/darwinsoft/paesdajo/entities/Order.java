@@ -25,18 +25,18 @@ public class Order {
 	@JoinColumn(name = "clientId")
 	private Client client;
 	
-	@OneToMany(mappedBy = "flavor")
-	private List<Flavor> sales = new ArrayList<>();
+	@OneToMany(mappedBy = "order")
+	private List<OrderFlavor> orderFlavors= new ArrayList<>();
 	
 	public Order() {
 		
 	}
 
-	public Order(Long id, Double amount, Client client, List<Flavor> sales) {
+	public Order(Long id, Double amount, Client client, List<OrderFlavor> orderFlavors) {
 		this.id = id;
 		this.amount = amount;
-		this.client = client;
-		this.sales = sales;
+		this.client = client;		
+		this.orderFlavors = orderFlavors;
 	}
 
 	public Long getId() {
@@ -62,8 +62,8 @@ public class Order {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
-	public List<Flavor> getSales() {
-		return sales;
+	
+	public List<OrderFlavor> getOrderFlavors(){
+		return orderFlavors;
 	}
 }
