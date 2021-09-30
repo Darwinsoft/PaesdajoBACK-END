@@ -5,6 +5,7 @@ INSERT INTO tb_client(name) VALUES ('Maria Joaquina');
 
 
 INSERT INTO tb_andress(client_id,andress,number,district,complement) VALUES (1, 'Rua Carlos Nobre', 746,'Santa Rita', 'fundos');
+INSERT INTO tb_andress(client_id,andress,number,district) VALUES (1, 'Rua Das Macieiras', 96,'Jardim Iolanda');
 INSERT INTO tb_andress(client_id,andress,number,district,complement) VALUES (2, 'Rua Carlos Nobre', 746,'Santa Rita', 'Casa Azul');
 INSERT INTO tb_andress(client_id,andress,number,district,complement) VALUES (3, 'Rua Salustiano Avalino Ribeiro', 746,'Colina', 'fundos');
 INSERT INTO tb_andress(client_id,andress,number,district,complement) VALUES (4, 'Rua Macapa', 1410,'Santa Rita', 'casa amarela');
