@@ -47,6 +47,10 @@ public class Telephone {
 		this.telephone = telephone;
 	}
 	
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 	public Client getClients() {
 		return client;
 	}

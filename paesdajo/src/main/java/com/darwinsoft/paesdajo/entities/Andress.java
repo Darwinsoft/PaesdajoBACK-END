@@ -77,6 +77,10 @@ public class Andress {
 		this.complement = complement;
 	}
 
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 	public Client getClient() {
 		return client;
 	}

@@ -3,6 +3,7 @@ package com.darwinsoft.paesdajo.dto;
 import java.io.Serializable;
 
 import com.darwinsoft.paesdajo.entities.Andress;
+import com.darwinsoft.paesdajo.entities.Client;
 
 public class AndressDTO implements Serializable{
 	
@@ -32,7 +33,7 @@ public class AndressDTO implements Serializable{
 		this.andress = andress.getAndress();
 		number = andress.getNumber();
 		district = andress.getDistrict();
-		complement = andress.getComplement();
+		complement = andress.getComplement();		
 	}
 
 	public Long getId() {

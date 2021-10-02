@@ -25,10 +25,9 @@ public class User {
 		
 	}
 	
-	public User(Long id, String cpf, Client client) {
+	public User(Long id, String cpf) {
 		this.id = id;
-		this.cpf = cpf;
-		this.client = client;
+		this.cpf = cpf;		
 	}
 
 	public Long getId() {

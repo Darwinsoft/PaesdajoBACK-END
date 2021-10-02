@@ -39,5 +39,3 @@ INSERT INTO tb_order_flavor(flavor_id, order_id) VALUES (3, 3);
 INSERT INTO tb_order_flavor(flavor_id, order_id) VALUES (4, 4);
 
 
-
-

@@ -62,14 +62,6 @@ public class Client {
 		this.name = name;
 	}
 
-	public List<Andress> getAndress() {
-		return andress;
-	}
-
-	public List<Telephone> getTelephones() {
-		return telephones;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -78,7 +70,27 @@ public class Client {
 		this.user = user;
 	}
 
+	public List<Andress> getAndress() {
+		return andress;
+	}
+
+	public void setAndress(List<Andress> andress) {
+		this.andress = andress;
+	}
+
+	public List<Telephone> getTelephones() {
+		return telephones;
+	}
+
+	public void setTelephones(List<Telephone> telephones) {
+		this.telephones = telephones;
+	}
+
 	public List<Order> getOrders() {
 		return orders;
-	}	
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 }

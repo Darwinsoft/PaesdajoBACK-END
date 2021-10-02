@@ -36,7 +36,10 @@ public class ClientDTO implements Serializable{
 		andress = resultAndress.stream().map(x -> new AndressDTO(x)).collect(Collectors.toList());
 		List<Telephone> resultTelephones = client.getTelephones();
 		telephones = resultTelephones.stream().map(x -> new TelephoneDTO(x)).collect(Collectors.toList());
-		user = new UserDTO(client.getUser());
+		if(client.getUser() != null) {
+			user = new UserDTO(client.getUser());	
+		}
+		
 	}
 	
 	public Long getId() {
@@ -55,12 +58,21 @@ public class ClientDTO implements Serializable{
 		this.name = name;
 	}
 	
-	public List<AndressDTO> getAndress(){
+	
+	public List<AndressDTO> getAndress() {
 		return andress;
 	}
-	
+
+	public void setAndress(List<AndressDTO> andress) {
+		this.andress = andress;
+	}
+
 	public List<TelephoneDTO> getTelephones(){
 		return telephones;
+	}
+	
+	public void setTelephones(List<TelephoneDTO> telephones){
+		this.telephones = telephones;
 	}
 	
 	public UserDTO getUser() {
