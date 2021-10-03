@@ -78,4 +78,8 @@ public class ClientDTO implements Serializable{
 	public UserDTO getUser() {
 		return user;
 	}
+	
+	public void setUser(UserDTO user){
+		this.user = user;
+	}
 }

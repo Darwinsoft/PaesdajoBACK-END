@@ -48,7 +48,7 @@ public class ClientController {
 	@PostMapping("/update")
 	public ResponseEntity<ClientDTO> update(@RequestBody ClientDTO client) {		
 		try {
-			ClientDTO list = service.create(client);
+			ClientDTO list = service.update(client);
 			return ResponseEntity.ok(list);
 		} catch (Exception e) {
 			System.out.print(e);

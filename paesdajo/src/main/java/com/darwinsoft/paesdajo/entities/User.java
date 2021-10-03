@@ -45,7 +45,11 @@ public class User {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	
+	public void setClients(Client client) {
+		this.client = client;
+	}
+	
 	public Client getClients() {
 		return client;
 	}
