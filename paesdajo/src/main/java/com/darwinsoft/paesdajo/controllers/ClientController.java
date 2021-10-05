@@ -29,7 +29,7 @@ public class ClientController {
 	}
 	
 	@GetMapping(value = "/search/{id}")
-	public ResponseEntity<Optional<ClientDTO>> findAll(@PathVariable Long id){
+	public ResponseEntity<Optional<ClientDTO>> findById(@PathVariable Long id){
 		Optional<ClientDTO> list = service.findAll(id);
 		return ResponseEntity.ok(list);
 	}

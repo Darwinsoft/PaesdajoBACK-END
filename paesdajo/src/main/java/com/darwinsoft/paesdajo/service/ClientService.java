@@ -56,24 +56,27 @@ public class ClientService {
 		Client clientObj = mapper.map(client, Client.class);
 		Client result = repository.save(clientObj);
 		
-		User user = result.getUser();
-		user.setClients(result);
-		user = userRepository.save(user);
-		
-		
-		List<Andress> andress = clientObj.getAndress();
-		List<Telephone> telephones = clientObj.getTelephones();
-		
-		for(Andress a : andress) {
-			a.setClient(clientObj);			
-			andressRepository.save(a);			
+		if(result.getUser() != null) {
+			User user = result.getUser();
+			user.setClients(result);
+			user = userRepository.save(user);	
 		}
 		
-		for(Telephone t : telephones) {
-			t.setClient(clientObj);			
-			telephoneRepository.save(t);			
+		if(clientObj.getAndress() != null) {
+			List<Andress> andress = clientObj.getAndress();
+			for(Andress a : andress) {
+				a.setClient(clientObj);			
+				andressRepository.save(a);			
+			}	
 		}
 		
+		if(clientObj.getTelephones() != null) {
+			List<Telephone> telephones = clientObj.getTelephones();
+			for(Telephone t : telephones) {
+				t.setClient(clientObj);			
+				telephoneRepository.save(t);			
+			}	
+		}
 		
 		return mapper.map(result, ClientDTO.class);
 	}
@@ -83,25 +86,35 @@ public class ClientService {
 		
 		Client clientObj = mapper.map(client, Client.class);
 		
-		User user = clientObj.getUser();
-		user.setClients(clientObj);
-		user = userRepository.save(user);
+		if(clientObj.getUser() != null) {
+			User user = clientObj.getUser();
+			user.setClients(clientObj);
+			user = userRepository.save(user);
+		}
 		
 		Client result = repository.save(clientObj);
 		
-		List<Andress> andress = clientObj.getAndress();
-		List<Telephone> telephones = clientObj.getTelephones();
-		
-		for(Andress a : andress) {
-			a.setClient(clientObj);			
-			andressRepository.save(a);			
+		if(clientObj.getAndress() != null) {
+			List<Andress> andress = clientObj.getAndress();
+			for(Andress a : andress) {
+				a.setClient(clientObj);			
+				andressRepository.save(a);			
+			}			
+			if(result.getAndress().removeIf(x -> x.getAndress() == null)) {
+				result.setAndress(andress);
+			}
 		}
 		
-		for(Telephone t : telephones) {
-			t.setClient(clientObj);			
-			telephoneRepository.save(t);			
+		if(clientObj.getTelephones() != null) {
+			List<Telephone> telephones = clientObj.getTelephones();
+			for(Telephone t : telephones) {
+				t.setClient(clientObj);			
+				telephoneRepository.save(t);			
+			}
+			if(result.getTelephones().removeIf(x -> x.getTelephone() == null)) {
+				result.setTelephones(telephones);
+			}
 		}
-		
 		
 		return mapper.map(result, ClientDTO.class);
 	}
