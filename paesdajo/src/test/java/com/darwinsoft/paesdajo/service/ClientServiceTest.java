@@ -1,4 +1,4 @@
-package com.darwinsoft.paesdajo;
+package com.darwinsoft.paesdajo.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +15,7 @@ import com.darwinsoft.paesdajo.entities.Client;
 import com.darwinsoft.paesdajo.repositories.ClientRepository;
 
 @SpringBootTest
-class PaesdajoApplicationTests {
+public class ClientServiceTest {
 	
 	private Integer countClients;
 	
@@ -24,7 +24,7 @@ class PaesdajoApplicationTests {
 	
 	@Autowired
 	private ClientRepository repository;
-
+	
 	@Test
 	void initTest() {
 		List<Client> clients = repository.findAll();
@@ -32,10 +32,8 @@ class PaesdajoApplicationTests {
 	}
 	
 	@Test
-	void contextLoads() {
+	void testFindAllMethod() {
 		ResponseEntity<List<ClientDTO>> clients = controller.findAll();
 		assertEquals(clients.getBody().size(), countClients);	
-		String var;
 	}
-
 }
